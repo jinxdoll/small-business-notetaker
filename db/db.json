@@ -1,6 +1,5 @@
 [
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    }
+    {"title":"Example of a note",
+    "text":"Welcome to Aimee's note taking app.",
+    "id":1}
 ]
