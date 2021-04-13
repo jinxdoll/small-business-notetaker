@@ -18,6 +18,6 @@ require('./routes/htmlRoute')(app);
 
 // Listener "starts" our server
 app.listen(PORT, () => {
-    console.log(`Congrats! Your app is listening on: ${PORT}`);
+    console.log(`Congrats! Your app is listening on: http://localhost:${PORT}`);
 });
 
