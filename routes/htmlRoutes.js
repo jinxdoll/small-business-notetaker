@@ -34,3 +34,30 @@ function note(app) {
             });
         });
         res.send('Your new note has been created!');
+
+        app.delete('./api/notes/:id', function (req, res) {
+            const deleteNote = req.params.id;
+            console.log(deleteNote);
+
+            fs.readFile('./db/db.json', function (err, data) {
+                if (err) throw err;
+
+                dbData = JSON.parse(data);
+                for (let i = 0; i < dbData.length; i++) {
+                    if (dbData[i].id === Number(deleteNote)) {
+                        dbData.splice([i], 1);
+                    }
+                }
+                console.log(dbData);
+                stringData = JSON.stringify(dbData);
+
+                fs.writeFile('./db/db.json', stringData, (err, data) => {
+                    if (err) throw err;
+                });
+            });
+            res.status("You have an error message:", 204).send();
+        });
+    }
+    );
+};   
+module.exports = note;    
