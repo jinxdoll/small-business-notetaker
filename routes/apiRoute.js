@@ -1,5 +1,6 @@
 // Dependencies
 const fs = require('fs');
+var data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
 module.exports = function (app) {
     app.get('./api/notes', function (req, res) {
@@ -14,7 +15,7 @@ module.exports = function (app) {
     app.post('/api/notes', function (req, res) {
         const userNotes = req.body;
 
-        fs.readFile('./db/db.json', function (err, data) {
+        fs.readFile("./db/db.json", "utf8", function (err, data) {
             if (err) throw err;
             console.log(err);
             dbData = JSON.parse(data);
@@ -25,9 +26,10 @@ module.exports = function (app) {
                 return (dbData);
 
             });
-            console.log(dbData);
+            console.log("line 28:" + dbData);
 
             stringData = JSON.stringify(dbData);
+            console.log("line 32:" + stringData)
 
             fs.writeFile('./db/db.json', stringData, (err, data) => {
                 if (err) throw err;
