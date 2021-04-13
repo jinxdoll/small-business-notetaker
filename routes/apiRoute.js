@@ -1,7 +1,7 @@
-const { Console } = require('console');
+// Dependencies
 const fs = require('fs');
 
-function note(app) {
+module.exports = function (app) {
     app.get('./api/notes', function (req, res) {
         fs.readFile('./db/db.json', function (err, data) {
             if (err) throw err;
@@ -20,7 +20,7 @@ function note(app) {
             dbData = JSON.parse(data);
             dbData.push(userNotes);
             let number = 1;
-            dbData.forEach ((note, index) => {
+            dbData.forEach((note, index) => {
                 note.id = number; number++;
                 return (dbData);
 
@@ -59,5 +59,4 @@ function note(app) {
         });
     }
     );
-};   
-module.exports = note;    
+};
